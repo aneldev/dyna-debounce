@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("lodash.debounce"));
 	else if(typeof define === 'function' && define.amd)
-		define("dyna-ts-module-boilerplate", [], factory);
+		define("dyna-debounce", ["lodash.debounce"], factory);
 	else if(typeof exports === 'object')
-		exports["dyna-ts-module-boilerplate"] = factory();
+		exports["dyna-debounce"] = factory(require("lodash.debounce"));
 	else
-		root["dyna-ts-module-boilerplate"] = factory();
-})(this, function() {
+		root["dyna-debounce"] = factory(root["lodash.debounce"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,30 +83,21 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Person = /** @class */ (function () {
-    function Person(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    Person.prototype.getName = function () {
-        return this.name;
-    };
-    Person.prototype.getAge = function () {
-        return this.age;
-    };
-    Person.prototype.get = function () {
-        return {
-            name: this.name,
-            age: this.age
-        };
-    };
-    return Person;
-}());
-exports.Person = Person;
+var debounce = __webpack_require__(1);
+exports.dynaDebounce = function (func, timeout, callOnTimeout) {
+    if (callOnTimeout === void 0) { callOnTimeout = true; }
+    return debounce(func, timeout, { leading: true, maxWait: callOnTimeout ? timeout : undefined });
+};
 
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash.debounce");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(0);
