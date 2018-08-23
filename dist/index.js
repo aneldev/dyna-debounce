@@ -84,9 +84,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var debounce = __webpack_require__(1);
-exports.dynaDebounce = function (func, timeout, callOnTimeout) {
-    if (callOnTimeout === void 0) { callOnTimeout = true; }
-    return debounce(func, timeout, { leading: true, maxWait: callOnTimeout ? timeout : undefined });
+exports.dynaDebounce = function (func, timeout, config) {
+    if (config === void 0) { config = {
+        leading: true,
+        maxWait: undefined,
+    }; }
+    return debounce(func, timeout, {
+        leading: !!config.leading,
+        maxWait: config.maxWait,
+    });
 };
 
 

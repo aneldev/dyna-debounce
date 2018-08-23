@@ -45,7 +45,7 @@ describe('dyna debounce test', () => {
 		let counter: number = 0;
 		let times: number = 0;
 		const myFunction = () => counter++;
-		const myDebounceFunction = dynaDebounce(myFunction, 200, true);
+		const myDebounceFunction = dynaDebounce(myFunction, 200, {maxWait: 200});
 
 		const intervalHandler = setInterval(() => {
 			myDebounceFunction();

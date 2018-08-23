@@ -10,8 +10,12 @@ Written in TypeScript, runs everywhere.
 
     dynaDebounce = (func,           // the function to call
                     timeout,        // timeout in ms
-                    callOnTimeout   // set it true to call it anyway on each timeout
+                    config?: IDynaDebounceConfig {
+                        leading?: boolean; // default: true       Set true to trigger on first call always.
+                        maxWait?: number;  // default: undefined  Set the timeout for max wait, to call it anyway after this timeout.
+                    }
     ) => Function
+
 
 # Reference
 
