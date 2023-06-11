@@ -6,7 +6,7 @@ export interface IDynaDebounceConfig {
   maxWait?: number;  // default: undefined  Set the timeout for max wait, to call it anyway after this timeout.
 }
 
-export const dynaDebounce = (func: (args?: any[]) => any,
+export const dynaDebounce = (func: (...args: any[]) => any,
                              timeout: number,
                              config: IDynaDebounceConfig = {
                                leading: true,
